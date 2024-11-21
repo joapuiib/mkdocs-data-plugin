@@ -1,0 +1,105 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mkdocs-data-plugin"
+dynamic = ["version"]
+description = "MkDocs plugin that allows to read data from markup files"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+authors = [
+    { name = "Joan Puigcerver", email = "joapuiib@gmail.com" },
+]
+classifiers = [
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "mkdocs>=1.5.2",
+]
+
+[project.entry-points."mkdocs.plugins"]
+data = "mkdocs_data_plugin.plugin:DataPlugin"
+
+[project.urls]
+Documentation = "https://joapuiib.github.io/mkdocs-data-plugin"
+Download = "https://github.com/joapuiib/mkdocs-data-plugin/releases"
+Homepage = "https://joapuiib.github.io/mkdocs-data-plugin"
+Source = "https://github.com/joapuiib/mkdocs-data-plugin"
+Tracker = "https://github.com/joapuiib/mkdocs-data-plugin/issues"
+
+[tool.hatch.version]
+path = "mkdocs_data_plugin/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/mkdocs_data_plugin",
+    "/tests",
+]
+[tool.hatch.build.targets.wheel]
+exclude = ["/tests"]
+
+[tool.hatch.envs.default.scripts]
+all = [
+    "hatch run test:test",
+    "hatch run style:check",
+]
+
+[tool.hatch.envs.test]
+dependencies = [
+    "pytest",
+]
+
+[tool.hatch.envs.test.scripts]
+test = [
+    "pytest -xs",
+]
+
+[[tool.hatch.envs.test.matrix]]
+python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+type = ["default"]
+
+[tool.hatch.envs.doc]
+dependencies = [
+    "mkdocs-material>=9.2.5"
+]
+
+[tool.hatch.envs.doc.scripts]
+serve = [
+    "mkdocs serve",
+]
+
+[tool.hatch.envs.style]
+detached = true
+dependencies = [
+    "black",
+    "isort",
+    "ruff",
+]
+
+[tool.hatch.envs.style.scripts]
+check = [
+    "isort --check-only --diff mkdocs_static_i18n",
+    "black -q --check --diff mkdocs_static_i18n",
+    "ruff check mkdocs_static_i18n",
+]
+format = [
+    "isort -q mkdocs_static_i18n",
+    "black -q mkdocs_static_i18n",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+skip-string-normalization = true
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+ignore = ["E501"]
