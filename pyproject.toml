@@ -17,6 +17,7 @@ classifiers = [
 ]
 dependencies = [
     "mkdocs>=1.5.2",
+    "mkdocs-macros-plugin>=1.2.0",
 ]
 
 [project.entry-points."mkdocs.plugins"]

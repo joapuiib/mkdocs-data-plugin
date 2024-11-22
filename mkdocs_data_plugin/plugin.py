@@ -33,8 +33,14 @@ class DataPlugin(BasePlugin[DataPluginConfig]):
         data[keys[-1]] = value
 
 
-    def on_pre_build(self, config: MkDocsConfig):
+    def on_config(self, config: MkDocsConfig):
         self.load_data(self.config.data_dir)
+
+        macros_plugin = config.plugins.get('macros')
+        if macros_plugin:
+            macros_plugin.register_variables({'data': self.data})
+        else:
+            log.warning("The macros plugin is not installed. The `data` variable won't be available in pages.")
 
 
     def load_data(self, path: str):
@@ -63,3 +69,10 @@ class DataPlugin(BasePlugin[DataPluginConfig]):
         _, extension = os.path.splitext(path)
         with open(path, 'r') as file:
             return self.processors[extension](file)
+
+
+
+    def on_page_context(self, context, page, config, nav):
+        context['data'] = self.data
+        return context
+
