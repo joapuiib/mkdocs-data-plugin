@@ -1,10 +1,11 @@
 # mkdocs-data-plugin
-MkDocs plugin that allows to read data from external markup files.
+__MkDocs Data Plugin__ is a plugin for [MkDocs](https://www.mkdocs.org/) that allows
+reading data from separate external markup files and use it in your Markdown pages.
 
 Currently supported formats:
 
-- JSON
-- YAML
+- JSON: `.json`
+- YAML: `.yml`, `.yaml`
 
 ## Documentation
 This plugin documentation can be found here: https://joapuiib.github.io/mkdocs-data-plugin/

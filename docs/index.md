@@ -4,11 +4,11 @@ title: Home
 # MkDocs Data Plugin
 
 __MkDocs Data Plugin__ is a plugin for [MkDocs](https://www.mkdocs.org/) that allows
-externalizing data from your Markdown files into separate files.
+reading data from separate external markup files and use it in your Markdown pages.
 
 ## Overview
 When using this plugin, you can define data in YAML or JSON files
-in a separate directory and reference it in your Markdown files.
+in a separate directory and reference it in your Markdown pages.
 
 ```txt
 root/
@@ -43,5 +43,5 @@ Files in this directory can be referenced in your Markdown files using the `data
 ## Supported Formats
 The plugin supports the following file formats:
 
-- YAML: `.yml`, `.yaml`
 - JSON: `.json`
+- YAML: `.yml`, `.yaml`
