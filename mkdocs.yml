@@ -66,8 +66,7 @@ plugins:
       use_anchor_titles: true
   - data
   - macros
-  - social:
-      enabled: !ENV [CI, false]
+  - social
   - tags
   - git-revision-date-localized
 

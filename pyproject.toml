@@ -63,7 +63,7 @@ type = ["default"]
 
 [tool.hatch.envs.doc]
 dependencies = [
-    "mkdocs-material~=9.5",
+    "mkdocs-material[imaging]~=9.5",
     "mkdocs-alias-plugin~=0.8",
     "mkdocs-git-revision-date-localized-plugin~=1.2",
 ]
@@ -71,6 +71,9 @@ dependencies = [
 [tool.hatch.envs.doc.scripts]
 serve = [
     "mkdocs serve",
+]
+build = [
+    "mkdocs build",
 ]
 
 [tool.hatch.envs.style]
