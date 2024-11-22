@@ -1,13 +1,14 @@
-import os
-import yaml
 import json
+import os
 
-
+import yaml
+from mkdocs.config import base
+from mkdocs.config import config_options as c
 from mkdocs.config.defaults import MkDocsConfig
-from mkdocs.config import base, config_options as c
 from mkdocs.plugins import BasePlugin, get_plugin_logger
 
 log = get_plugin_logger(__name__)
+
 
 class DataPluginConfig(base.Config):
     data_dir = c.Type(str, default='data')
@@ -16,12 +17,7 @@ class DataPluginConfig(base.Config):
 class DataPlugin(BasePlugin[DataPluginConfig]):
     def __init__(self):
         self.data = {}
-        self.processors = {
-            '.yml': yaml.safe_load,
-            '.yaml': yaml.safe_load,
-            '.json': json.load
-        }
-
+        self.processors = {'.yml': yaml.safe_load, '.yaml': yaml.safe_load, '.json': json.load}
 
     def set_data(self, keys, value):
         """
@@ -32,7 +28,6 @@ class DataPlugin(BasePlugin[DataPluginConfig]):
             data = data.setdefault(key, {})
         data[keys[-1]] = value
 
-
     def on_config(self, config: MkDocsConfig):
         self.load_data(self.config.data_dir)
 
@@ -40,8 +35,9 @@ class DataPlugin(BasePlugin[DataPluginConfig]):
         if macros_plugin:
             macros_plugin.register_variables({'data': self.data})
         else:
-            log.warning("The macros plugin is not installed. The `data` variable won't be available in pages.")
-
+            log.warning(
+                "The macros plugin is not installed. The `data` variable won't be available in pages."
+            )
 
     def load_data(self, path: str):
         """
@@ -61,7 +57,6 @@ class DataPlugin(BasePlugin[DataPluginConfig]):
                 filename, _ = os.path.splitext(file)
                 self.set_data(keys + [filename], value)
 
-
     def load_file(self, path: str):
         """
         Load a file and return its content.
@@ -70,9 +65,6 @@ class DataPlugin(BasePlugin[DataPluginConfig]):
         with open(path, 'r') as file:
             return self.processors[extension](file)
 
-
-
     def on_page_context(self, context, page, config, nav):
         context['data'] = self.data
         return context
-

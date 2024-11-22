@@ -1,28 +1,10 @@
-# mkdocs-data-plugin
-MkDocs plugin that allows to read data from external markup files.
+---
+title: Home
+---
+# MkDocs Data Plugin
 
-Currently supported formats:
-
-- JSON
-- YAML
-
-## Documentation
-This plugin documentation can be found here: https://joapuiib.github.io/mkdocs-data-plugin/
-
-## Installation
-This plugin can be installed via pip:
-
-```bash
-pip install mkdocs-data-plugin
-```
-
-## Configuration
-Activate the plugin in your `mkdocs.yml`:
-
-```yaml
-plugins:
-  - data
-```
+__MkDocs Data Plugin__ is a plugin for [MkDocs](https://www.mkdocs.org/) that allows
+externalizing data from your Markdown files into separate files.
 
 ## Overview
 When using this plugin, you can define data in YAML or JSON files
@@ -46,7 +28,20 @@ root/
 Files in this directory can be referenced in your Markdown files using the `data` variable.
 
 ```markdown
+{% raw %}
 {% for fruit in data.fruits -%}
 - {{ fruit }}
 {% endfor %}
+{% endraw %}
 ```
+/// html | div.result
+{% for fruit in data.fruits -%}
+- {{ fruit }}
+{% endfor %}
+///
+
+## Supported Formats
+The plugin supports the following file formats:
+
+- YAML: `.yml`, `.yaml`
+- JSON: `.json`

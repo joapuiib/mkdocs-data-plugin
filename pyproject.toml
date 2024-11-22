@@ -63,7 +63,9 @@ type = ["default"]
 
 [tool.hatch.envs.doc]
 dependencies = [
-    "mkdocs-material>=9.2.5"
+    "mkdocs-material~=9.5",
+    "mkdocs-alias-plugin~=0.8",
+    "mkdocs-git-revision-date-localized-plugin~=1.2",
 ]
 
 [tool.hatch.envs.doc.scripts]
@@ -81,13 +83,13 @@ dependencies = [
 
 [tool.hatch.envs.style.scripts]
 check = [
-    "isort --check-only --diff mkdocs_static_i18n",
-    "black -q --check --diff mkdocs_static_i18n",
-    "ruff check mkdocs_static_i18n",
+    "isort --check-only --diff mkdocs_data_plugin",
+    "black -q --check --diff mkdocs_data_plugin",
+    "ruff check mkdocs_data_plugin",
 ]
 format = [
-    "isort -q mkdocs_static_i18n",
-    "black -q mkdocs_static_i18n",
+    "isort -q mkdocs_data_plugin",
+    "black -q mkdocs_data_plugin",
 ]
 
 [tool.black]
