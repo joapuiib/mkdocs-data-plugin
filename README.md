@@ -22,6 +22,7 @@ Activate the plugin in your `mkdocs.yml`:
 
 ```yaml
 plugins:
+  - macros
   - data
 ```
 
