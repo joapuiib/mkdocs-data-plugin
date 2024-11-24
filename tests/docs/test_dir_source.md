@@ -1,5 +1,5 @@
 ---
-title: "Test Data Template"
+title: "Test Directory Source"
 ---
 
 - data.a: `{{ data.a }}`
