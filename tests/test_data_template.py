@@ -9,7 +9,7 @@ def test_loads_files():
         "tests/mkdocs.yml",
         plugins={
             "macros": {},
-            "data": {'mappings': {'data': 'tests/data'}},
+            "data": {'sources': {'data': 'tests/data'}},
         },
     )
 

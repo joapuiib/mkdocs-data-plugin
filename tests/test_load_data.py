@@ -2,11 +2,11 @@ from mkdocs.commands.build import build
 from mkdocs.config.base import load_config
 
 
-def test_inexistent_mapping_is_skipped():
+def test_inexistent_source_is_skipped():
     mkdocs_config = load_config(
         "tests/mkdocs.yml",
         plugins={
-            "data": {'mappings': {'data': 'tests/inexistent'}}
+            "data": {'sources': {'data': 'tests/inexistent'}}
         },
     )
 
@@ -14,21 +14,21 @@ def test_inexistent_mapping_is_skipped():
 
     dataPlugin = mkdocs_config["plugins"]["data"]
 
-    assert "data" not in dataPlugin.mappings
+    assert "data" not in dataPlugin.sources
 
 
-def test_folder_mapping():
+def test_folder_source():
     mkdocs_config = load_config(
         "tests/mkdocs.yml",
         plugins={
-            "data": {'mappings': {'data': 'tests/data'}}
+            "data": {'sources': {'data': 'tests/data'}}
         },
     )
 
     build(mkdocs_config)
 
     dataPlugin = mkdocs_config["plugins"]["data"]
-    data = dataPlugin.mappings["data"]
+    data = dataPlugin.sources["data"]
 
     assert data == {
             "a": {
@@ -49,18 +49,18 @@ def test_folder_mapping():
             },
     }
 
-def test_file_mapping():
+def test_file_source():
     mkdocs_config = load_config(
         "tests/mkdocs.yml",
         plugins={
-            "data": {'mappings': {'fruits': 'tests/docs/fruits.yml'}}
+            "data": {'sources': {'fruits': 'tests/docs/fruits.yml'}}
         },
     )
 
     build(mkdocs_config)
 
     dataPlugin = mkdocs_config["plugins"]["data"]
-    data = dataPlugin.mappings["fruits"]
-    print(dataPlugin.mappings)
+    data = dataPlugin.sources["fruits"]
+    print(dataPlugin.sources)
 
     assert data == ['Apple', 'Banana', 'Strawberry']
