@@ -48,3 +48,19 @@ def test_folder_mapping():
                 },
             },
     }
+
+def test_file_mapping():
+    mkdocs_config = load_config(
+        "tests/mkdocs.yml",
+        plugins={
+            "data": {'mappings': {'fruits': 'tests/docs/fruits.yml'}}
+        },
+    )
+
+    build(mkdocs_config)
+
+    dataPlugin = mkdocs_config["plugins"]["data"]
+    data = dataPlugin.mappings["fruits"]
+    print(dataPlugin.mappings)
+
+    assert data == ['Apple', 'Banana', 'Strawberry']

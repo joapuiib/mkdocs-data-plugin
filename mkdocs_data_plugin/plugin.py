@@ -30,16 +30,19 @@ class DataPlugin(BasePlugin[DataPluginConfig]):
                 self.load_folder(mapping, path)
             else:
                 value = self.load_file(path)
-                self.set_data(mapping, [], value)
+                self.update_data(mapping, [], value)
 
     def update_data(self, mapping: str, keys: list, value: any):
         """
         Update the mappings data with the given value.
         """
-        data = self.mappings.setdefault(mapping, {})
-        for key in keys[:-1]:
-            data = data.setdefault(key, {})
-        data[keys[-1]] = value
+        if len(keys) == 0:
+            self.mappings[mapping] = value
+        else:
+            data = self.mappings.setdefault(mapping, {})
+            for key in keys[:-1]:
+                data = data.setdefault(key, {})
+            data[keys[-1]] = value
 
     def load_folder(self, mapping: str, path: str):
         """
