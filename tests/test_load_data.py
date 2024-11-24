@@ -2,34 +2,33 @@ from mkdocs.commands.build import build
 from mkdocs.config.base import load_config
 
 
-def test_empty_data_is_empty_dict():
+def test_inexistent_mapping_is_skipped():
     mkdocs_config = load_config(
         "tests/mkdocs.yml",
         plugins={
-            "data": {'data_dir': 'tests/inexistent'}
+            "data": {'mappings': {'data': 'tests/inexistent'}}
         },
     )
 
     build(mkdocs_config)
 
     dataPlugin = mkdocs_config["plugins"]["data"]
-    data = dataPlugin.data
 
-    assert data == {}
+    assert "data" not in dataPlugin.mappings
 
 
-def test_loads_files():
+def test_folder_mapping():
     mkdocs_config = load_config(
         "tests/mkdocs.yml",
         plugins={
-            "data": {'data_dir': 'tests/data'}
+            "data": {'mappings': {'data': 'tests/data'}}
         },
     )
 
     build(mkdocs_config)
 
     dataPlugin = mkdocs_config["plugins"]["data"]
-    data = dataPlugin.data
+    data = dataPlugin.mappings["data"]
 
     assert data == {
             "a": {
