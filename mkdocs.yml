@@ -28,8 +28,8 @@ theme:
 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
-      primary: deep purple
-      accent: deep purple
+      primary: lime
+      accent: lime
       scheme: default 
       toggle:
         icon: material/toggle-switch
@@ -37,8 +37,8 @@ theme:
 
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
-      primary: deep purple
-      accent: deep purple
+      primary: lime
+      accent: lime
       scheme: slate
       toggle:
         icon: material/toggle-switch-off
@@ -66,7 +66,8 @@ plugins:
       use_anchor_titles: true
   - data
   - macros
-  - social
+  - social:
+      enabled: !ENV [CI, false]
   - tags
   - git-revision-date-localized
 

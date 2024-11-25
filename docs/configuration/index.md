@@ -2,18 +2,26 @@
 
 This plugin provides the following configuration options.
 
-## Data Directory
-The `data_dir` option specifies the directory where data files are stored. By default, this is set to `data`.
+## Data Sources
+The `sources` option is a dictionary that defines the data sources to be used.
+Each key-value pair represents a source name and its corresponding directory path.
+
+A source can reference directories or files.
+If a directory is specified, all files in the directory and its subdirectories will be loaded.
+
+By default, a single data source named `data` is defined with the directory path `data`.
 
 ```yaml
 plugins:
-  - data:
-      data_dir: data
+  - sources:
+      data: data # default
+      foo: docs/foo.yml
 ```
 
 !!! tip
     It is recommended to configure the `watch` option in the `mkdocs.yml` file
-    to automatically reload the site when data files are modified.
+    to automatically reload the site when files in the data sources outside
+    the `docs` directory are modified.
 
     ```yaml
     watch:
