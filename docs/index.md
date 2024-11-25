@@ -4,11 +4,11 @@ title: Home
 # MkDocs Data Plugin
 
 __MkDocs Data Plugin__ is a plugin for [MkDocs](https://www.mkdocs.org/) that allows
-reading data from separate external markup files and use it in your Markdown pages.
+reading data from markup files and use it in your Markdown pages.
 
 ## Overview
 When using this plugin, you can define data in YAML or JSON files
-in a separate directory and reference it in your Markdown pages.
+in a separate directory and reference them in your Markdown pages.
 
 ```txt
 root/
