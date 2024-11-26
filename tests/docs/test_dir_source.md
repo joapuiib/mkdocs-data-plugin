@@ -3,9 +3,9 @@ title: "Test Directory Source"
 ---
 
 - data.a: `{{ data.a }}`
-- data.a.a1: `{{ data.a.a1 }}`
-- data.a.a2: `{{ data.a.a2 }}`
-- data.dir1.b.b1: `{{ data.dir1.b.b1 }}`
-- data.dir1.b.b2: `{{ data.dir1.b.b2 }}`
-- data.dir2.c.c1: `{{ data.dir2.c.c1 }}`
-- data.dir2.c.c2: `{{ data.dir2.c.c2 }}`
+- data.a.number: `{{ data.a.number }}`
+- data.a.string: `{{ data.a.string }}`
+- data.dir1.b.number: `{{ data.dir1.b.number }}`
+- data.dir1.b.string: `{{ data.dir1.b.string }}`
+- data.dir2.c.number: `{{ data.dir2.c.number }}`
+- data.dir2.c.string: `{{ data.dir2.c.string }}`

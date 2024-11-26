@@ -1,4 +1,4 @@
 {
-  "c1": 3,
-  "c2": "text"
+  "number": 3,
+  "string": "text"
 }
