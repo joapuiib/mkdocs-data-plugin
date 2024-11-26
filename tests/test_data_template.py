@@ -20,13 +20,13 @@ def test_dir_source_in_markdown_file():
         data_loaded = re.findall(r"<code>([^<]*)", f.read())
         print(data_loaded)
         assert(data_loaded == [
-            "{'a1': 1, 'a2': 'text'}", # data/a.yml
-            "1", # data/a.yml -> a1
-            "text", # data/a.yml -> a2
-            "2", # data/dir1/b.yml -> b1
-            "text", # data/dir1/b.yml -> b2
-            "3", # data/dir2/c.yml -> c1
-            "text", # data/dir2/c.yml -> c2
+            "{'number': 1, 'string': 'text'}", # data/a.yml
+            "1", # data/a.yml -> number
+            "text", # data/a.yml -> string
+            "2", # data/dir1/b.yml -> number
+            "text", # data/dir1/b.yml -> string
+            "3", # data/dir2/c.yml -> number
+            "text", # data/dir2/c.yml -> string
         ])
 
 def test_file_source_in_markdown_file():

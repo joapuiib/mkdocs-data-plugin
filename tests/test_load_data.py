@@ -32,19 +32,21 @@ def test_folder_source():
 
     assert data == {
             "a": {
-                "a1": 1,
-                "a2": "text",
+                "number": 1,
+                "string": "text",
             },
             "dir1": {
+                "number": 1,
+                "string": "text",
                 "b": {
-                    "b1": 2,
-                    "b2": "text",
+                    "number": 2,
+                    "string": "text",
                 },
             },
             "dir2": {
                 "c": {
-                    "c1": 3,
-                    "c2": "text",
+                    "number": 3,
+                    "string": "text",
                 },
             },
     }
@@ -64,19 +66,21 @@ def test_folder_source_slash():
 
     assert data == {
             "a": {
-                "a1": 1,
-                "a2": "text",
+                "number": 1,
+                "string": "text",
             },
             "dir1": {
+                "number": 1,
+                "string": "text",
                 "b": {
-                    "b1": 2,
-                    "b2": "text",
+                    "number": 2,
+                    "string": "text",
                 },
             },
             "dir2": {
                 "c": {
-                    "c1": 3,
-                    "c2": "text",
+                    "number": 3,
+                    "string": "text",
                 },
             },
     }
