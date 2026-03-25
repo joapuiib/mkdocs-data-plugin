@@ -9,16 +9,16 @@ jobs:
     name: Build and publish Python 🐍 distributions 📦 to PyPI
     environment:
       name: pypi
-      url: https://pypi.org/p/pygments-shell-console
+      url: https://pypi.org/p/mkdocs-data-plugin
     permissions:
       id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
     steps:
-      - name: Set up Python 3.8
+      - name: Set up Python 3
         uses: actions/checkout@master
-      - name: Set up Python 3.8
+      - name: Set up Python 3
         uses: actions/setup-python@v1
         with:
-          python-version: 3.8
+          python-version: 3.x
       - name: Install pypa/build
         run: >-
           python -m
