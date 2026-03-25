@@ -5,12 +5,14 @@ on:
     branches:
       - main
   pull_request:
+    types: ['opened', 'edited', 'reopened', 'synchronize', 'ready_for_review']
     branches:
       - '**'
 
 
 jobs:
   test:
+    if: github.event.pull_request.draft == false || github.event_name != 'pull_request'
     strategy:
       max-parallel: 5
       matrix:
@@ -44,6 +46,7 @@ jobs:
         shell: bash
 
   lint:
+    if: github.event.pull_request.draft == false || github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
