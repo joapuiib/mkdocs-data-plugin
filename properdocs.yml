@@ -17,7 +17,7 @@ exclude_docs: |
   _*
 
 theme:
-  name: material
+  name: materialx
   icon:
     logo: material/file-send-outline
   palette:
